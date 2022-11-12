@@ -1,0 +1,114 @@
+$colors: ( "primary": #31A09B, "secondary": #44d7b6, "tertiary": #0091FF, "cancel": #6F6F6F, "background": #232A33, "sidebar": #343B44, "navbar": #232A33, "input": #f0f0f0, "active-input": #dfdfdf, "negative-transaction": #FF5B57, "positive-transaction": #4FD889, "new-line": #A7AEB7)
+
+$navbar-height: 64px
+$sidebar-width: 320px
+$header-font-size: 24px
+
+body,html
+    margin: 0
+    padding: 0
+
+#app
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    color: #2c3e50
+    font-family: 'Avenir', Helvetica, Arial, sans-serif
+    // height: 100vh
+    min-height: 100vh
+    text-align: center
+    a
+        color: inherit
+        text-decoration: none
+
+.sidebar
+    background: map-get($colors, 'sidebar')
+    height: 100%
+    width: $sidebar-width
+    .sidebar-elements
+        display: flex
+        flex-direction: column
+        height: 100%
+        justify-content: space-between
+        .sidebar-element
+            align-items: center
+            color: white
+            cursor: pointer
+            display: flex
+            flex-direction: column
+            font-size: 21px
+            font-weight: 500
+            height: 3em
+            justify-content: center
+            width: 100%
+        .add-account
+            align-items: center
+            color: white
+            cursor: pointer
+            display: flex
+            flex-direction: row
+            justify-content: center
+            padding: 16px
+            span
+                margin: 0px 0px 0px 10px
+
+.fullscreen
+    height: 100vh
+    margin: 0px
+    min-height: 100vh
+    min-width: 100%
+    padding: 0px
+    width: 100%
+
+.overlay
+    position: absolute
+    height: 100%
+    width: 100%
+    top: 0px
+
+.popup
+    align-items: center
+    background-color: rgba(0, 0, 0, 0.5)
+    display: flex
+    height: 100vh
+    justify-content: center
+    left: 0px
+    margin: 0px
+    min-height: 100vh
+    min-width: 100%
+    padding: 0px
+    position: absolute
+    top: 0px
+    width: 100%
+
+.body
+    height: calc(100% - #{$navbar-height})
+
+/* TRANSIOTIONS */
+.slide-fade-enter
+    tranform: translateY(10px)
+    opacity: 0
+
+.slide-fade-enter-active,
+.slide-fade-leave-active
+    transition: all 0.2s linear
+
+.slide-fade-leave-to
+    transform: translateY(-10px)
+    opacity: 0
+
+.pop-enter-active,
+.pop-leave-active
+    transition: height 0.2s linear
+    opacity: 1
+.pop-enter
+    opacity: 0
+.pop-leave-to
+    opacity: 0
+
+.height-expansion-enter-active,
+.height-expansion-leave-active
+    transition: all 0.2s linear
+.height-expansion-enter
+    height: 0px !important
+.height-expansion-leave-to
+    height: 0px !important

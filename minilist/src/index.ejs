@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>minilist</title>
+      <% if (htmlWebpackPlugin.options.nodeModules) { %>
+      <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+      <script>
+         require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+      </script>
+      <% } %>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+         rel="stylesheet"
+      />
+   </head>
+   <body>
+      <div class="titlebar">
+         <span>
+            Minilist
+         </span>
+      </div>
+      <div id="app"></div>
+      <!-- Set `__static` path to static files in production -->
+      <% if (!require('process').browser) { %>
+      <script>
+         if (process.env.NODE_ENV !== 'development')
+            window.__static = require('path')
+               .join(__dirname, '/static')
+               .replace(/\\/g, '\\\\')
+      </script>
+      <% } %>
+
+      <!-- webpack builds are automatically injected -->
+   </body>
+   <style>
+      .titlebar {
+         -webkit-user-select: none;
+         -webkit-app-region: drag; /* definisce che la zona è draggabile */
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-family: 'Poppins', sans-serif;
+      }
+      body {
+         min-height: 100vh;
+         height: 100vh;
+         width: 100vw;
+         min-width: 100vw;
+         box-sizing: border-box;
+         margin: 0px;
+         padding: 0px;
+      }
+   </style>
+</html>
